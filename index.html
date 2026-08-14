@@ -4,420 +4,348 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Birthday.exe 🎂</title>
+<title>Happy Birthday 🎂</title>
 
 <style>
 * {
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     min-height: 100vh;
-    overflow: hidden;
-    background:
-        radial-gradient(circle at center, #32104d, #090914 55%, #000);
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: #05050b;
     color: white;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.container {
-    position: relative;
-    z-index: 5;
-    width: 95%;
-    max-width: 900px;
-    text-align: center;
-    padding: 20px;
-}
-
-.terminal {
-    font-family: monospace;
-    color: #00ff9d;
-    font-size: 14px;
-    line-height: 1.7;
-}
-
-h1 {
-    font-size: clamp(40px, 8vw, 85px);
-    margin: 10px 0 20px;
-
-    background: linear-gradient(
-        90deg,
-        #ff4ecd,
-        #7c5cff,
-        #00e5ff
+/* Background glow */
+body::before {
+    content: "";
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(
+        circle,
+        rgba(120, 0, 255, 0.25),
+        transparent 70%
     );
-
-    -webkit-background-clip: text;
-    color: transparent;
-
-    animation: glow 1.5s infinite alternate;
+    pointer-events: none;
+    z-index: -1;
 }
 
-.photos {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-}
-
-.photo {
-    width: 250px;
-    height: 280px;
-    object-fit: cover;
-    border-radius: 20px;
-
-    border: 2px solid rgba(255,255,255,.3);
-
-    box-shadow:
-        0 0 25px rgba(150,80,255,.3);
-
-    transition: .4s;
-}
-
-.photo:hover {
-    transform: scale(1.05) rotate(-1deg);
-}
-
-.subtitle {
-    font-size: 19px;
-    color: #ddd;
-    margin-bottom: 20px;
-}
-
-button {
-    border: none;
-    padding: 15px 25px;
-    border-radius: 30px;
-
-    font-size: 16px;
-    font-weight: bold;
-
-    cursor: pointer;
-
-    background: white;
-    color: #111;
-
-    box-shadow: 0 0 25px rgba(255,255,255,.3);
-
-    transition: .3s;
-}
-
-button:hover {
-    transform: scale(1.08);
-}
-
-#secret {
-    display: none;
-    margin-top: 20px;
-    font-size: 20px;
-    line-height: 1.6;
-}
-
+/* Floating balloons */
 .balloon {
     position: fixed;
-    bottom: -100px;
-    font-size: 55px;
-
-    animation: fly 8s linear infinite;
-
-    z-index: 2;
+    font-size: 70px;
+    animation: float 5s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
 }
 
 .b1 {
-    left: 8%;
+    left: 5%;
+    top: 40%;
 }
 
 .b2 {
-    left: 28%;
-    animation-delay: 2s;
-}
-
-.b3 {
-    left: 62%;
+    right: 4%;
+    top: 70%;
     animation-delay: 1s;
 }
 
+.b3 {
+    left: 65%;
+    top: 52%;
+    animation-delay: 2s;
+}
+
 .b4 {
-    left: 86%;
+    right: 10%;
+    top: 88%;
     animation-delay: 3s;
 }
 
-.confetti {
-    position: fixed;
-
-    top: -30px;
-
-    width: 9px;
-    height: 16px;
-
-    z-index: 10;
-
-    animation: fall linear forwards;
-}
-
-.firework {
-    position: fixed;
-
-    width: 6px;
-    height: 6px;
-
-    border-radius: 50%;
-
-    z-index: 9;
-
-    animation: burst 1s ease-out forwards;
-}
-
-@keyframes glow {
-
-    from {
-        filter: drop-shadow(0 0 5px #ff4ecd);
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(-4deg);
     }
 
-    to {
-        filter: drop-shadow(0 0 25px #00e5ff);
+    50% {
+        transform: translateY(-25px) rotate(4deg);
     }
-
 }
 
-@keyframes fly {
-
-    from {
-        transform: translateY(0);
-    }
-
-    to {
-        transform:
-            translateY(-120vh)
-            rotate(25deg);
-
-        opacity: 0;
-    }
-
+/* Main container */
+.container {
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+    padding: 45px 20px 80px;
+    position: relative;
+    z-index: 2;
 }
 
-@keyframes fall {
-
-    to {
-        transform:
-            translateY(110vh)
-            rotate(720deg);
-
-        opacity: 0;
-    }
-
+/* Terminal */
+.terminal {
+    color: #00ff9d;
+    font-family: monospace;
+    font-size: 16px;
+    line-height: 1.8;
+    text-align: center;
+    margin-bottom: 25px;
+    text-shadow: 0 0 10px rgba(0, 255, 157, 0.4);
 }
 
-@keyframes burst {
-
-    to {
-        transform:
-            translate(var(--dx), var(--dy));
-
-        opacity: 0;
-    }
-
+/* Heading */
+h1 {
+    margin: 10px 0 45px;
+    text-align: center;
+    font-size: clamp(48px, 10vw, 78px);
+    line-height: 1.05;
+    background: linear-gradient(
+        90deg,
+        #ff4fd8,
+        #765cff,
+        #00cfff
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 35px rgba(90, 80, 255, 0.25);
 }
 
-@media(max-width:600px) {
+/* Memories */
+.memory {
+    width: min(100%, 390px);
+    margin: 0 auto 28px;
+    border: 3px solid rgba(255, 255, 255, 0.28);
+    border-radius: 32px;
+    overflow: hidden;
+    background: rgba(35, 10, 55, 0.55);
+    box-shadow:
+        0 0 25px rgba(150, 50, 255, 0.25),
+        inset 0 0 30px rgba(120, 30, 200, 0.12);
+}
 
-    .photo {
-        width: 42vw;
-        height: 220px;
+.memory img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 520px;
+    object-fit: cover;
+}
+
+.memory-title {
+    font-size: 24px;
+    padding: 12px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.18);
+}
+
+/* Message */
+.message {
+    text-align: center;
+    font-size: clamp(24px, 5vw, 34px);
+    line-height: 1.35;
+    margin: 35px auto;
+}
+
+/* Button */
+.birthday-btn {
+    display: block;
+    margin: 35px auto;
+    padding: 17px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    background: linear-gradient(
+        90deg,
+        #ff3cac,
+        #784cff,
+        #00c6ff
+    );
+    box-shadow: 0 0 25px rgba(150, 70, 255, 0.45);
+    transition: transform 0.2s ease;
+}
+
+.birthday-btn:active {
+    transform: scale(0.95);
+}
+
+/* Final message */
+.final-message {
+    text-align: center;
+    font-size: 22px;
+    line-height: 1.6;
+    padding: 20px 10px 60px;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+
+    .container {
+        padding-top: 35px;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
     .terminal {
-        font-size: 11px;
+        font-size: 14px;
     }
 
+    h1 {
+        margin-bottom: 35px;
+    }
+
+    .memory {
+        border-radius: 28px;
+    }
+
+    .balloon {
+        font-size: 55px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-
-    <div class="terminal">
-
-        > booting birthday.exe...<br>
-
-        > scanning friendship database...<br>
-
-        > BEST FRIEND FOUND ✅<br>
-
-        > loading memories...
-
-    </div>
-
-
-    <h1>
-        Happy Birthday Bhadwe
-    </h1>
-
-
-    <div class="photos">
-
-        <img
-            class="photo"
-            src="photo1.jpg"
-            alt="Memory 1"
-        >
-
-        <img
-            class="photo"
-            src="photo2.jpg"
-            alt="Memory 2"
-        >
-
-    </div>
-
-
-    <div class="subtitle">
-
-        Another year older.<br>
-
-        Still the same idiot. 💀
-
-    </div>
-
-
-    <button onclick="celebrate()">
-
-        🎉 CLICK TO ACTIVATE BIRTHDAY MODE
-
-    </button>
-
-
-    <div id="secret">
-
-        🎂 <b>Happy Birthday Bhadwe</b> 🎂
-
-        <br><br>
-
-        Friendship.exe has successfully survived
-        another year. 😂
-
-        <br>
-
-        Stay crazy. Stay legendary. 🫂
-
-    </div>
-
-</div>
-
-
 <div class="balloon b1">🎈</div>
 <div class="balloon b2">🎈</div>
 <div class="balloon b3">🎈</div>
 <div class="balloon b4">🎈</div>
 
+<div class="container">
+
+    <div class="terminal">
+        &gt; booting birthday.exe... 🎂<br>
+        &gt; scanning friendship database...<br>
+        &gt; BEST FRIEND FOUND ✅<br>
+        &gt; loading memories...
+    </div>
+
+    <h1>
+        Happy Birthday<br>
+        Bhadwe
+    </h1>
+
+    <div class="memory">
+        <img
+            src="IMG_20260814_002708_148.jpg"
+            alt="Memory 1"
+        >
+        <div class="memory-title">Memory 1</div>
+    </div>
+
+    <div class="memory">
+        <img
+            src="file_00000000fc108208a437b24bc3ce18e8.png"
+            alt="Memory 2"
+        >
+        <div class="memory-title">Memory 2</div>
+    </div>
+
+    <div class="message">
+        Another year older.<br>
+        Still the same idiot. 💀
+    </div>
+
+    <button
+        class="birthday-btn"
+        onclick="birthdaySurprise()"
+    >
+        🎂 CLICK TO ACTIVATE BIRTHDAY 🎂
+    </button>
+
+    <div
+        id="surprise"
+        class="final-message"
+        style="display:none;"
+    >
+        🎉 HAPPY BIRTHDAY BHADWE 🎉<br><br>
+
+        Ek aur saal barbaad kar diya tune. 😂<br>
+        Aise hi pareshan karta reh aur<br>
+        meri life jhand karta reh. ❤️<br><br>
+
+        Stay happy, stay crazy! 🫂
+    </div>
+
+</div>
 
 <script>
+function birthdaySurprise() {
 
-function celebrate() {
+    const surprise = document.getElementById("surprise");
 
-    document.getElementById("secret").style.display = "block";
+    surprise.style.display = "block";
 
-    document.querySelector("button").innerText =
-        "🔥 BIRTHDAY MODE ACTIVATED 🔥";
+    surprise.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
 
-
-    /* CONFETTI */
-
-    for (let i = 0; i < 180; i++) {
-
-        const c = document.createElement("div");
-
-        c.className = "confetti";
-
-        c.style.left =
-            Math.random() * 100 + "vw";
-
-        c.style.animationDuration =
-            (2 + Math.random() * 4) + "s";
-
-        c.style.background =
-            `hsl(${Math.random() * 360},100%,60%)`;
-
-        document.body.appendChild(c);
-
-        setTimeout(() => {
-            c.remove();
-        }, 6500);
-
-    }
-
-
-    /* FIREWORKS */
-
-    for (let f = 0; f < 14; f++) {
-
-        setTimeout(() => {
-
-            const x =
-                10 + Math.random() * 80;
-
-            const y =
-                8 + Math.random() * 45;
-
-
-            for (let i = 0; i < 40; i++) {
-
-                const spark =
-                    document.createElement("div");
-
-                spark.className = "firework";
-
-                spark.style.left =
-                    x + "vw";
-
-                spark.style.top =
-                    y + "vh";
-
-
-                const angle =
-                    Math.random() * Math.PI * 2;
-
-                const distance =
-                    50 + Math.random() * 160;
-
-
-                spark.style.setProperty(
-                    "--dx",
-                    Math.cos(angle) * distance + "px"
-                );
-
-                spark.style.setProperty(
-                    "--dy",
-                    Math.sin(angle) * distance + "px"
-                );
-
-
-                spark.style.background =
-                    `hsl(${Math.random() * 360},100%,65%)`;
-
-
-                document.body.appendChild(spark);
-
-
-                setTimeout(() => {
-                    spark.remove();
-                }, 1000);
-
-            }
-
-        }, f * 350);
-
-    }
-
+    createConfetti();
 }
 
+function createConfetti() {
+
+    for (let i = 0; i < 80; i++) {
+
+        const confetti = document.createElement("div");
+
+        confetti.innerHTML = ["🎉", "✨", "🎈", "🎂", "💥"][
+            Math.floor(Math.random() * 5)
+        ];
+
+        confetti.style.position = "fixed";
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.top = "-30px";
+        confetti.style.fontSize =
+            (15 + Math.random() * 20) + "px";
+        confetti.style.zIndex = "9999";
+        confetti.style.pointerEvents = "none";
+
+        document.body.appendChild(confetti);
+
+        const duration = 2500 + Math.random() * 2500;
+
+        confetti.animate(
+            [
+                {
+                    transform: "translateY(0) rotate(0deg)",
+                    opacity: 1
+                },
+                {
+                    transform:
+                        "translateY(110vh) rotate(720deg)",
+                    opacity: 0
+                }
+            ],
+            {
+                duration: duration,
+                easing: "linear"
+            }
+        );
+
+        setTimeout(() => {
+            confetti.remove();
+        }, duration);
+    }
+}
 </script>
 
 </body>

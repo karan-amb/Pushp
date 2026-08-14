@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Birthday.exe 🎂</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at center, #32104d, #090914 55%, #000);
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    position: relative;
+    z-index: 5;
+    width: 95%;
+    max-width: 900px;
+    text-align: center;
+    padding: 20px;
+}
+
+.terminal {
+    font-family: monospace;
+    color: #00ff9d;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+h1 {
+    font-size: clamp(40px, 8vw, 85px);
+    margin: 10px 0 20px;
+
+    background: linear-gradient(
+        90deg,
+        #ff4ecd,
+        #7c5cff,
+        #00e5ff
+    );
+
+    -webkit-background-clip: text;
+    color: transparent;
+
+    animation: glow 1.5s infinite alternate;
+}
+
+.photos {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.photo {
+    width: 250px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 20px;
+
+    border: 2px solid rgba(255,255,255,.3);
+
+    box-shadow:
+        0 0 25px rgba(150,80,255,.3);
+
+    transition: .4s;
+}
+
+.photo:hover {
+    transform: scale(1.05) rotate(-1deg);
+}
+
+.subtitle {
+    font-size: 19px;
+    color: #ddd;
+    margin-bottom: 20px;
+}
+
+button {
+    border: none;
+    padding: 15px 25px;
+    border-radius: 30px;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    background: white;
+    color: #111;
+
+    box-shadow: 0 0 25px rgba(255,255,255,.3);
+
+    transition: .3s;
+}
+
+button:hover {
+    transform: scale(1.08);
+}
+
+#secret {
+    display: none;
+    margin-top: 20px;
+    font-size: 20px;
+    line-height: 1.6;
+}
+
+.balloon {
+    position: fixed;
+    bottom: -100px;
+    font-size: 55px;
+
+    animation: fly 8s linear infinite;
+
+    z-index: 2;
+}
+
+.b1 {
+    left: 8%;
+}
+
+.b2 {
+    left: 28%;
+    animation-delay: 2s;
+}
+
+.b3 {
+    left: 62%;
+    animation-delay: 1s;
+}
+
+.b4 {
+    left: 86%;
+    animation-delay: 3s;
+}
+
+.confetti {
+    position: fixed;
+
+    top: -30px;
+
+    width: 9px;
+    height: 16px;
+
+    z-index: 10;
+
+    animation: fall linear forwards;
+}
+
+.firework {
+    position: fixed;
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    z-index: 9;
+
+    animation: burst 1s ease-out forwards;
+}
+
+@keyframes glow {
+
+    from {
+        filter: drop-shadow(0 0 5px #ff4ecd);
+    }
+
+    to {
+        filter: drop-shadow(0 0 25px #00e5ff);
+    }
+
+}
+
+@keyframes fly {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform:
+            translateY(-120vh)
+            rotate(25deg);
+
+        opacity: 0;
+    }
+
+}
+
+@keyframes fall {
+
+    to {
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+
+        opacity: 0;
+    }
+
+}
+
+@keyframes burst {
+
+    to {
+        transform:
+            translate(var(--dx), var(--dy));
+
+        opacity: 0;
+    }
+
+}
+
+@media(max-width:600px) {
+
+    .photo {
+        width: 42vw;
+        height: 220px;
+    }
+
+    .terminal {
+        font-size: 11px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="terminal">
+
+        > booting birthday.exe...<br>
+
+        > scanning friendship database...<br>
+
+        > BEST FRIEND FOUND ✅<br>
+
+        > loading memories...
+
+    </div>
+
+
+    <h1>
+        Happy Birthday Bhadwe
+    </h1>
+
+
+    <div class="photos">
+
+        <img
+            class="photo"
+            src="photo1.jpg"
+            alt="Memory 1"
+        >
+
+        <img
+            class="photo"
+            src="photo2.jpg"
+            alt="Memory 2"
+        >
+
+    </div>
+
+
+    <div class="subtitle">
+
+        Another year older.<br>
+
+        Still the same idiot. 💀
+
+    </div>
+
+
+    <button onclick="celebrate()">
+
+        🎉 CLICK TO ACTIVATE BIRTHDAY MODE
+
+    </button>
+
+
+    <div id="secret">
+
+        🎂 <b>Happy Birthday Bhadwe</b> 🎂
+
+        <br><br>
+
+        Friendship.exe has successfully survived
+        another year. 😂
+
+        <br>
+
+        Stay crazy. Stay legendary. 🫂
+
+    </div>
+
+</div>
+
+
+<div class="balloon b1">🎈</div>
+<div class="balloon b2">🎈</div>
+<div class="balloon b3">🎈</div>
+<div class="balloon b4">🎈</div>
+
+
+<script>
+
+function celebrate() {
+
+    document.getElementById("secret").style.display = "block";
+
+    document.querySelector("button").innerText =
+        "🔥 BIRTHDAY MODE ACTIVATED 🔥";
+
+
+    /* CONFETTI */
+
+    for (let i = 0; i < 180; i++) {
+
+        const c = document.createElement("div");
+
+        c.className = "confetti";
+
+        c.style.left =
+            Math.random() * 100 + "vw";
+
+        c.style.animationDuration =
+            (2 + Math.random() * 4) + "s";
+
+        c.style.background =
+            `hsl(${Math.random() * 360},100%,60%)`;
+
+        document.body.appendChild(c);
+
+        setTimeout(() => {
+            c.remove();
+        }, 6500);
+
+    }
+
+
+    /* FIREWORKS */
+
+    for (let f = 0; f < 14; f++) {
+
+        setTimeout(() => {
+
+            const x =
+                10 + Math.random() * 80;
+
+            const y =
+                8 + Math.random() * 45;
+
+
+            for (let i = 0; i < 40; i++) {
+
+                const spark =
+                    document.createElement("div");
+
+                spark.className = "firework";
+
+                spark.style.left =
+                    x + "vw";
+
+                spark.style.top =
+                    y + "vh";
+
+
+                const angle =
+                    Math.random() * Math.PI * 2;
+
+                const distance =
+                    50 + Math.random() * 160;
+
+
+                spark.style.setProperty(
+                    "--dx",
+                    Math.cos(angle) * distance + "px"
+                );
+
+                spark.style.setProperty(
+                    "--dy",
+                    Math.sin(angle) * distance + "px"
+                );
+
+
+                spark.style.background =
+                    `hsl(${Math.random() * 360},100%,65%)`;
+
+
+                document.body.appendChild(spark);
+
+
+                setTimeout(() => {
+                    spark.remove();
+                }, 1000);
+
+            }
+
+        }, f * 350);
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

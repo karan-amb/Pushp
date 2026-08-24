@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Happy Birthday Pyari Bahan 🎂❤️</title>
+<title>Happy Birthday Pyari Bahan 🎂</title>
 
 <style>
 * {
@@ -19,161 +19,212 @@ body {
     margin: 0;
     min-height: 100vh;
     overflow-x: hidden;
-    overflow-y: auto;
     background:
-        radial-gradient(circle at 50% 35%, #20103d 0%, #09070f 45%, #020205 100%);
+        radial-gradient(circle at top, #29104d 0%, #12051f 45%, #050509 100%);
     color: white;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
 }
 
-/* Background glow */
-body::before {
-    content: "";
-    position: fixed;
-    width: 550px;
-    height: 550px;
-    left: 50%;
-    top: 45%;
-    transform: translate(-50%, -50%);
-    background: radial-gradient(
-        circle,
-        rgba(150, 50, 255, 0.22),
-        transparent 70%
-    );
-    pointer-events: none;
-    z-index: -1;
-}
-
-/* Floating balloons */
+/* Balloons */
 .balloon {
     position: fixed;
-    font-size: 60px;
-    pointer-events: none;
-    z-index: 1;
-    animation: float 5s ease-in-out infinite;
+    width: 55px;
+    height: 70px;
+    border-radius: 50% 50% 45% 45%;
+    opacity: 0.8;
+    z-index: 0;
+    animation: float 7s ease-in-out infinite;
+}
+
+.balloon::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 90px;
+    background: rgba(255,255,255,0.4);
+    left: 50%;
+    top: 68px;
 }
 
 .b1 {
+    background: #ff3b6b;
     left: 5%;
-    top: 40%;
+    top: 18%;
 }
 
 .b2 {
-    right: 4%;
-    top: 70%;
+    background: #8c52ff;
+    right: 7%;
+    top: 35%;
     animation-delay: 1s;
 }
 
 .b3 {
-    left: 62%;
-    top: 55%;
+    background: #00d9ff;
+    left: 10%;
+    top: 70%;
     animation-delay: 2s;
 }
 
 .b4 {
-    right: 8%;
-    top: 88%;
+    background: #ffb000;
+    right: 12%;
+    top: 75%;
     animation-delay: 3s;
 }
 
 @keyframes float {
-    0%, 100% {
-        transform: translateY(0) rotate(-5deg);
+    0%,100% {
+        transform: translateY(0) rotate(-4deg);
     }
 
     50% {
-        transform: translateY(-25px) rotate(5deg);
+        transform: translateY(-30px) rotate(5deg);
     }
 }
 
-/* Main container */
+/* Main */
 .container {
-    width: 100%;
-    max-width: 700px;
-    margin: auto;
-    padding: 40px 18px 80px;
     position: relative;
     z-index: 2;
+    width: 100%;
+    max-width: 650px;
+    margin: auto;
+    padding: 55px 20px 90px;
+    text-align: center;
 }
 
-/* Terminal */
-.terminal {
-    color: #00ff9d;
-    font-family: monospace;
-    font-size: 15px;
-    line-height: 1.8;
-    text-align: center;
+/* Intro */
+.intro {
+    font-size: 14px;
+    color: #d9c9ff;
+    letter-spacing: 2px;
     margin-bottom: 25px;
-    text-shadow: 0 0 10px rgba(0, 255, 157, 0.45);
+    animation: fadeIn 1.5s ease;
 }
 
-/* Heading */
+/* Title */
 h1 {
-    margin: 10px 0 40px;
-    text-align: center;
-    font-size: clamp(48px, 11vw, 78px);
+    margin: 0;
+    font-size: clamp(42px, 12vw, 78px);
     line-height: 1.05;
+    font-weight: 800;
 
     background: linear-gradient(
         90deg,
         #ff4fd8,
-        #765cff,
-        #00cfff
+        #8c5cff,
+        #00cfff,
+        #ff4fd8
     );
 
+    background-size: 300%;
     -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    -webkit-text-fill-color: transparent;
 
-    text-shadow: 0 0 35px rgba(120, 80, 255, 0.25);
+    animation: gradientMove 5s linear infinite;
 }
 
-/* Photo cards */
+@keyframes gradientMove {
+    0% {
+        background-position: 0%;
+    }
+
+    100% {
+        background-position: 300%;
+    }
+}
+
+.subtitle {
+    margin-top: 18px;
+    font-size: 20px;
+    color: #eee;
+}
+
+/* Cake */
+.cake {
+    font-size: 80px;
+    margin: 30px 0 10px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+/* Memories */
+.memory-title {
+    margin-top: 55px;
+    font-size: 28px;
+}
+
 .memory {
-    width: min(100%, 390px);
-    margin: 0 auto 30px;
+    margin: 25px auto;
+    padding: 10px;
+    max-width: 470px;
 
-    border: 3px solid rgba(255, 255, 255, 0.25);
-    border-radius: 30px;
-
-    overflow: hidden;
-
-    background: rgba(35, 10, 55, 0.55);
+    background: rgba(255,255,255,0.06);
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 25px;
 
     box-shadow:
-        0 0 25px rgba(150, 50, 255, 0.25),
-        inset 0 0 30px rgba(120, 30, 200, 0.12);
+        0 0 25px rgba(156,80,255,0.25);
+
+    overflow: hidden;
 }
 
 .memory img {
     display: block;
     width: 100%;
     height: auto;
-    max-height: 520px;
+    max-height: 600px;
     object-fit: cover;
+    border-radius: 18px;
 }
 
-.memory-title {
-    text-align: center;
-    font-size: 23px;
-    padding: 12px;
-    background: rgba(0, 0, 0, 0.2);
+.caption {
+    padding: 15px 5px 8px;
+    font-size: 17px;
+    color: #ddd;
 }
 
-/* Main wish */
-.message {
-    text-align: center;
-    font-size: clamp(23px, 5vw, 32px);
-    line-height: 1.45;
-    margin: 35px auto;
+/* Wish */
+.wish {
+    margin: 45px auto 0;
+    padding: 30px 25px;
+    max-width: 560px;
+
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 25px;
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 0 35px rgba(130,70,255,0.25);
+}
+
+.wish h2 {
+    margin-top: 0;
+    font-size: 30px;
+}
+
+.wish p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #eee;
 }
 
 /* Button */
-.birthday-btn {
-    display: block;
-    margin: 35px auto;
-
-    padding: 17px 28px;
+button {
+    margin-top: 30px;
+    padding: 16px 28px;
 
     border: none;
     border-radius: 50px;
@@ -183,41 +234,39 @@ h1 {
 
     color: white;
 
-    background: linear-gradient(
-        90deg,
-        #ff3cac,
-        #784cff,
-        #00c6ff
-    );
-
-    box-shadow: 0 0 25px rgba(150, 70, 255, 0.45);
+    background:
+        linear-gradient(
+            90deg,
+            #ff3cac,
+            #784ba0,
+            #2b86c5
+        );
 
     cursor: pointer;
 
-    transition: transform 0.2s ease;
+    box-shadow:
+        0 8px 30px rgba(120,70,255,0.4);
+
+    transition: 0.3s;
 }
 
-.birthday-btn:active {
-    transform: scale(0.94);
+button:hover {
+    transform: scale(1.06);
 }
 
-/* Final surprise */
-.final-message {
-    text-align: center;
-
-    font-size: clamp(20px, 5vw, 26px);
-
-    line-height: 1.65;
-
-    padding: 25px 10px 70px;
-
-    animation: appear 0.8s ease;
+/* Final message */
+#finalMessage {
+    display: none;
+    margin-top: 30px;
+    font-size: 22px;
+    line-height: 1.6;
+    animation: fadeIn 1s ease;
 }
 
-@keyframes appear {
+@keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(25px);
+        transform: translateY(15px);
     }
 
     to {
@@ -230,23 +279,39 @@ h1 {
 @media (max-width: 600px) {
 
     .container {
-        padding-top: 30px;
+        padding-top: 45px;
     }
 
-    .terminal {
-        font-size: 13px;
+    .intro {
+        font-size: 12px;
     }
 
-    h1 {
-        margin-bottom: 35px;
+    .subtitle {
+        font-size: 17px;
     }
 
-    .memory {
-        border-radius: 28px;
+    .cake {
+        font-size: 65px;
+    }
+
+    .memory-title {
+        font-size: 24px;
+    }
+
+    .wish {
+        padding: 25px 18px;
+    }
+
+    .wish h2 {
+        font-size: 26px;
+    }
+
+    .wish p {
+        font-size: 16px;
     }
 
     .balloon {
-        font-size: 50px;
+        transform: scale(0.75);
     }
 }
 </style>
@@ -255,197 +320,149 @@ h1 {
 <body>
 
 <!-- Floating balloons -->
-<div class="balloon b1">🎈</div>
-<div class="balloon b2">🎈</div>
-<div class="balloon b3">🎈</div>
-<div class="balloon b4">🎈</div>
+<div class="balloon b1"></div>
+<div class="balloon b2"></div>
+<div class="balloon b3"></div>
+<div class="balloon b4"></div>
 
+<main class="container">
 
-<div class="container">
-
-    <!-- Terminal intro -->
-    <div class="terminal">
-        &gt; booting birthday.exe... 🎂<br>
-        &gt; scanning family database...<br>
-        &gt; BEST SISTER FOUND ❤️<br>
-        &gt; loading beautiful memories...
+    <div class="intro">
+        ✨ A LITTLE SURPRISE FOR SOMEONE SPECIAL ✨
     </div>
 
-
-    <!-- Birthday heading -->
     <h1>
         Happy Birthday<br>
         Pyari Bahan ❤️
     </h1>
 
+    <div class="cake">
+        🎂
+    </div>
 
-    <!-- First photo -->
+    <div class="subtitle">
+        Today is all about you! 🥳
+    </div>
+
+
+    <!-- Memories -->
+
+    <h2 class="memory-title">
+        📸 Some Beautiful Memories
+    </h2>
+
+
+    <!-- IMAGE 1 -->
     <div class="memory">
 
         <img
-            src="IMG_20260814_002708_148.jpg"
-            alt="Beautiful memory"
-        >
+            src="IMG_20251226_202502_525.jpg"
+            alt="Memory 1">
 
-        <div class="memory-title">
-            Memory 1 ❤️
+        <div class="caption">
+            ❤️ One of those moments worth remembering forever.
         </div>
 
     </div>
 
 
-    <!-- Second photo -->
+    <!-- IMAGE 2 -->
     <div class="memory">
 
         <img
-            src="file_00000000fc108208a437b24bc3ce18e8.png"
-            alt="Beautiful memory"
-        >
+            src="IMG_20260825_025456.jpg"
+            alt="Memory 2">
 
-        <div class="memory-title">
-            Memory 2 ❤️
+        <div class="caption">
+            ✨ Another beautiful memory with my pyari bahan.
         </div>
 
     </div>
 
 
-    <!-- Wish -->
-    <div class="message">
+    <!-- Birthday Wish -->
 
-        Happy Birthday meri pyari bahan ❤️🎂<br><br>
+    <section class="wish">
 
-        Hamesha khush reh, muskurati reh<br>
-        aur teri har wish puri ho. ✨🫂
+        <h2>
+            💖 Happy Birthday Pyari Bahan!
+        </h2>
 
-    </div>
+        <p>
+            Meri pyari bahan, tumhari life hamesha
+            happiness, success aur beautiful moments
+            se bhari rahe. ❤️
+        </p>
+
+        <p>
+            Tum hamesha aise hi smile karti raho,
+            apne saare dreams achieve karo aur
+            life mein bahut aage jao. ✨
+        </p>
+
+        <p>
+            Tum meri life ka ek bahut special part ho.
+            Chahe hum kitna bhi lad lein, tum hamesha
+            meri pyari bahan rahogi. 🫶
+        </p>
+
+        <p>
+            I hope this birthday brings you
+            lots of happiness, laughter and
+            beautiful memories. 🎂
+        </p>
+
+        <p>
+            Once again...<br>
+
+            <strong>
+                Happy Birthday Pyari Bahan! 🎂❤️
+            </strong>
+        </p>
 
 
-    <!-- Surprise button -->
-    <button
-        class="birthday-btn"
-        onclick="birthdaySurprise()"
-    >
-        🎂 CLICK TO ACTIVATE BIRTHDAY 🎂
-    </button>
+        <button onclick="showMessage()">
+            🎁 CLICK FOR A SURPRISE
+        </button>
 
 
-    <!-- Final message -->
-    <div
-        id="surprise"
-        class="final-message"
-        style="display:none;"
-    >
+        <div id="finalMessage">
 
-        🎉 HAPPY BIRTHDAY PYARI BAHAN 🎉<br><br>
+            🎉 You deserve all the happiness in the world! 🎉
 
-        Tu sirf meri bahan nahi,<br>
-        meri life ka ek bahut special part hai. ❤️<br><br>
+            <br><br>
 
-        Bhagwan kare teri life hamesha
-        khushiyon se bhari rahe,<br>
+            Keep smiling, keep shining and
+            always stay the amazing person you are. ❤️
 
-        tu jo chahe wo tujhe mile<br>
-        aur tere face ki smile kabhi kam na ho. 🫂✨<br><br>
+            <br><br>
 
-        Hamesha aise hi khush reh,<br>
-        aur apne dreams ko pura kar. 🌸<br><br>
+            Love you, Pyari Bahan! 🫶🎂
 
-        Love you meri pyari bahan! ❤️<br>
-        Happy Birthday once again! 🎂🎉
+        </div>
 
-    </div>
+    </section>
 
-</div>
+</main>
 
 
 <script>
 
-function birthdaySurprise() {
+function showMessage() {
 
-    const surprise = document.getElementById("surprise");
+    const message =
+        document.getElementById("finalMessage");
 
-    surprise.style.display = "block";
+    message.style.display = "block";
 
-    surprise.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-    });
+    setTimeout(function() {
 
-    createConfetti();
-}
+        message.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
 
-
-function createConfetti() {
-
-    for (let i = 0; i < 80; i++) {
-
-        const confetti = document.createElement("div");
-
-        const emojis = [
-            "🎉",
-            "✨",
-            "🎈",
-            "🎂",
-            "❤️",
-            "🌸"
-        ];
-
-        confetti.innerHTML =
-            emojis[Math.floor(Math.random() * emojis.length)];
-
-        confetti.style.position = "fixed";
-
-        confetti.style.left =
-            Math.random() * 100 + "vw";
-
-        confetti.style.top = "-30px";
-
-        confetti.style.fontSize =
-            (15 + Math.random() * 20) + "px";
-
-        confetti.style.zIndex = "9999";
-
-        confetti.style.pointerEvents = "none";
-
-
-        document.body.appendChild(confetti);
-
-
-        const duration =
-            2500 + Math.random() * 2500;
-
-
-        confetti.animate(
-
-            [
-                {
-                    transform:
-                        "translateY(0) rotate(0deg)",
-                    opacity: 1
-                },
-
-                {
-                    transform:
-                        "translateY(110vh) rotate(720deg)",
-                    opacity: 0
-                }
-            ],
-
-            {
-                duration: duration,
-                easing: "linear"
-            }
-
-        );
-
-
-        setTimeout(() => {
-
-            confetti.remove();
-
-        }, duration);
-
-    }
+    }, 100);
 
 }
 
